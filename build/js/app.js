@@ -68,6 +68,22 @@ var ToDoList;
 /// <reference path="to-do-classes-interfaces.ts"/>
 var ToDoList;
 (function (ToDoList) {
+    // export var getTask = function(taskCollection: Task[]): String[] {
+    //   var home: String[] = [];
+    //   var work: String[] = [];
+    //   var hobby: String[] = [];
+    //   var descriptions: String[] = [home, work, hobby];
+    //   for(var task of taskCollection) {
+    //     if(task.constructor.name === 'HomeTask'){
+    //       home.push(task.description);
+    //     } else if(task.constructor.name === 'HobbyTask'){
+    //       hobby.push(task.description);
+    //     } else(task.constructor.work === 'WorkTask'){
+    //       work.push(task.description);
+    //     }
+    //   }
+    //   return descriptions;
+    // }
     ToDoList.describeTasksForPerson = function (assignee, taskCollection) {
         var descriptions = [];
         for (var _i = 0, taskCollection_1 = taskCollection; _i < taskCollection_1.length; _i++) {
@@ -78,7 +94,37 @@ var ToDoList;
         }
         return descriptions;
     };
+    ToDoList.grabTasksOfType = function (type) {
+        var arr = [];
+        for (var _i = 0, tasks_1 = tasks; _i < tasks_1.length; _i++) {
+            var task = tasks_1[_i];
+            if (task.constructor.name === type) {
+                arr.push(task);
+            }
+        }
+        return arr;
+    };
 })(ToDoList || (ToDoList = {}));
+$(document).ready(function () {
+    $("#task").submit(function (event) {
+        event.preventDefault();
+        var selected = $("select.task-type").val();
+        tasks.forEach(function (i) {
+            if (i.constructor.name === selected) {
+                $(".result").append("<li>" + i.constructor.name + "</ul><ul><li>" + i.description + "<ul><li> Priority: " + i.priority, "</li></ul></li>");
+            }
+        });
+        $("#priority").submit(function (event) {
+            event.preventDefault();
+            var selectedall = $("select.task-priority").val();
+            tasks.forEach(function (i) {
+                if (i.constructor.priority === selected) {
+                    $(".result").append("<li>" + i.constructor.name + "</ul><ul><li>" + i.description + "<ul><li> Priority: " + i.priority, "</li></ul></li>");
+                }
+            });
+        });
+    });
+});
 /// <reference path="to-do-classes-interfaces.ts" />
 /// <reference path="to-do-people.ts" />
 /// <reference path="to-do-listing-functions.ts" />

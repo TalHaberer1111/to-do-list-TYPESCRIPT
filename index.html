@@ -9,6 +9,25 @@
   </head>
   <body>
     <h1>My To-Do List</h1>
-    <form id=""
+    <form id="task">
+      <select class="task-type" name="">
+        <option id="hobby" value="HobbyTask">Hobby</option>
+        <option id="home" value="HomeTask">Home</option>
+        <option id="work" value="WorkTask">Work</option>
+      </select>
+      <button id="submit1">Submit</button>
+    </form>
+    <form id="priority">
+      <select class="task-priority" name="">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+      <button id="submit2">Submit</button>
+    </form>
+      <!-- <input id="specific-task" type="text" name="name" value="">
+      <label id="specific-task" for="">Enter Your Task</label> -->
+    </form>
+    <ul class="result"></ul>
   </body>
 </html>
